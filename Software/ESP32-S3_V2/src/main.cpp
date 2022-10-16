@@ -28,6 +28,9 @@ void keyboard_transfer_cb(usb_transfer_t *transfer)
         uint8_t *const p = transfer->data_buffer;
         ESP_LOGI("", "HID report: %02x %02x %02x %02x %02x %02x %02x %02x",
             p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]);
+
+        // ESP_LOGE("", "HID report: %02x %02x %02x %02x %02x %02x %02x %02x",
+        //     p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]);
         if(bleKeyboard.isConnected()) 
         {
             bleKeyboard.sendReport((KeyReport*) p);
@@ -162,8 +165,14 @@ void show_config_desc_full(const usb_config_desc_t *config_desc)
 
 void setup() 
 {
+  esp_log_level_set("",ESP_LOG_VERBOSE );
+  // Serial.begin(115200);
   // put your setup code here, to run once:
-  ESP_LOGI("","Starting BLE work!");
+  ESP_LOGD("D","Starting BLE work!");
+  ESP_LOGE("E","Starting BLE work!");
+  ESP_LOGI("I","Starting BLE work!");
+  ESP_LOGW("W","Starting BLE work!");
+  ESP_LOGV("V","Starting BLE work!");
   bleKeyboard.begin();
   usbh_setup(show_config_desc_full);
 }
