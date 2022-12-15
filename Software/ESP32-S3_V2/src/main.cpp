@@ -163,7 +163,6 @@ void show_config_desc_full(const usb_config_desc_t *config_desc)
 
 void setup() 
 {
-  esp_log_level_set("",ESP_LOG_VERBOSE );
   // Serial.begin(115200);
   // put your setup code here, to run once:
   ESP_LOGD("D","Starting BLE work!");
