@@ -29,8 +29,6 @@ void keyboard_transfer_cb(usb_transfer_t *transfer)
         ESP_LOGI("", "HID report: %02x %02x %02x %02x %02x %02x %02x %02x",
             p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]);
 
-        // ESP_LOGE("", "HID report: %02x %02x %02x %02x %02x %02x %02x %02x",
-        //     p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]);
         if(bleKeyboard.isConnected()) 
         {
             bleKeyboard.sendReport((KeyReport*) p);
